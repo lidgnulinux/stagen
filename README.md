@@ -1,4 +1,4 @@
-# Stage Wayland Compositor (Versi Lanjut / Next)
+# Stage Wayland Compositor (Versi Lanjut / Next) , Mirror : https://gitlab.com/lidgl/stage-next.
 
 ## Apa ini ?
 
@@ -24,6 +24,7 @@ Stage merupakan wayland compositor yang dikembangkan oleh [mdepx](https://github
 - Fungsi `pseudo minimize` atau minimize palsu, mengirim jendela ke bawah background, sehingga tidak terlihat.
 - `Minimize` & `maximize` jendela melalui tombol CSD (Client Side Decoration).
 - Fitur `sendto_ws`, mengirim jendela dari satu workspace ke workspace yang lain.
+- 
 
 ## Dependensi
 
@@ -78,6 +79,7 @@ Berikut adalah cara untuk *build*, menginstall dan *run* stage :
     ```
 
 1. Jangan lupa untuk menyalin contoh skrip _screenshot_ "addons/ss_window" ke $PATH !
+1. Bisa juga di-build menggunakan meson, `meson setup build` & `ninja -C build`. 
 
 NB :
 
