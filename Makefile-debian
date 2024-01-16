@@ -1,0 +1,33 @@
+WL_SCANNER	= /usr/bin/wayland-scanner
+WLR_LAYER_SHELL = protocols/wlr-layer-shell-unstable-v1.xml
+XDG_SHELL = /usr/share/wayland-protocols/stable/xdg-shell/xdg-shell.xml
+
+CFLAGS +=	-I/usr/local/include/ -I/usr/include/pixman-1/ -I.
+CFLAGS +=	-DWLR_USE_UNSTABLE
+
+LDFLAGS =	-L/usr/local/lib/x86_64-linux-gnu -lwayland-server -lwlroots -lxkbcommon -linput
+
+HEADERS =	xdg-shell-protocol.h wlr-layer-shell-unstable-v1-protocol.h
+
+all:	${HEADERS}
+	cc ${CFLAGS} -Os -c stage.c -o stage.o
+	cc stage.o -o stage ${LDFLAGS}
+
+prod:	${HEADERS}
+	cc ${CFLAGS} ${LDFLAGS} stage.c -o stage
+
+xdg-shell-protocol.h:
+	${WL_SCANNER} server-header ${XDG_SHELL} $@
+
+wlr-layer-shell-unstable-v1-protocol.h:
+	${WL_SCANNER} server-header ${WLR_LAYER_SHELL} $@
+
+run:
+	ssh-agent ./stage
+
+clean:
+	rm -f stage stage.o ${HEADERS}
+
+install: stage
+	mkdir -p $(HOME)/.local/bin
+	cp -r stage $(HOME)/.local/bin

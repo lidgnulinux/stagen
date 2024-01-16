@@ -1,0 +1,15 @@
+#!/bin/sh
+
+while true; do
+        # CPU_SPEED=$(sysctl hw.cpuspeed | cut -d "=" -f 2 | cut -d "." -f 1)
+        # CPU_TEMP=$(sysctl hw.sensors.cpu0.temp0 | cut -d "=" -f 2 | cut -d "." -f 1)
+        # RAM=$(top | grep Memory | awk {'print $3'})
+        #BAT_STATUS=$(sysctl hw.sensors.acpiac0.indicator0 | cut -d "=" -f 2 | cut -d "." -f 1)
+        BAT=$(acpi | awk {'print $4'} | tr -d ",")
+        BAT_STATUS=$(acpi | awk {'print $3'} | tr -d ",")
+        DATE=$(date)
+        #NWID=$(ifconfig | grep ieee | awk {'print $3'})
+        #IP=$(dig +short myip.opendns.com @resolver1.opendns.com)
+        echo -n "  $USER | $DATE | Bat: $BAT - $BAT_STATUS\r"
+        sleep 15
+done

@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+
+input=$(tail -n1 ~/.cache/tiny_info)
+
+x=$(echo "$input" | awk '{print $4}') 
+y=$(echo "$input" | awk '{print $5}') 
+w=$(echo "$input" | awk '{print $6}') 
+h=$(echo "$input" | awk '{print $7}') 
+
+grim -g "$x,$y "$w"x"$h""

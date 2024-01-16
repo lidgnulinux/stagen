@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+foot -w 1352x20 \
+	-a termbar \
+	sh -c /home/lidg/.local/bin/termbar
