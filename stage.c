@@ -1314,9 +1314,10 @@ cycle_window_next(struct stage_server *server)
 {
 	struct stage_output *out;
 	struct stage_workspace *ws;
-	double lx;
-	double ly;
-	out = output_at(server, lx, ly);
+//	double lx;
+//	double ly;
+//	out = output_at(server, lx, ly);
+	out = cursor_at(server);
 	
 	ws = &workspaces[out->curws];
 
