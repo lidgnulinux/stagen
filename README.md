@@ -69,7 +69,7 @@ By default, The available shortcut are :
 
 ## Dependency.
 
-TinyWay has dependency on wlroots library, check on wlroots [0.17.1](https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/0.17.1). We will also make a branch which follow the latest development of wlroots.
+Stagen has dependency on wlroots library, check on wlroots [0.17.1](https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/0.17.1). We will also make a branch which follow the latest development of wlroots.
 
 ## How to *build*, *install* and *run*.
 
