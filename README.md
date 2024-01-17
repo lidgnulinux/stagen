@@ -78,10 +78,16 @@ These are steps to *build*, *install* and *run*.
 <details>
   <summary>Click to expand.</summary>
 
-1. Adjust the setting or configuration at config/config.h !
+1. Adjust the setting or configuration at conf/config.h !
 1. Adjust the keybind / shortcut at stage.c, check at handle_keybinding function (optional) !
-1. Build with `make` !
-1. Install with `make install` to install stagen !
+1. Build with `meson` and `ninja` !
+
+    ``` 
+    $ meson setup build
+    $ ninja -C build
+    ```
+
+1. Install with `ninja -C build install` to install stagen !
 1. To make screenshot work properly, run stage with this command !
 
     ```
@@ -93,13 +99,6 @@ These are steps to *build*, *install* and *run*.
 
     ```
     $ XCURSOR_THEME=your_cursor_theme XCURSOR_SIZE=cursor_size /path/to/stage > ~/.cache/tiny_info
-    ```
-
-1. Stage also support meson for compilation.
-
-    ```
-    $ meson setup build
-    $ ninja -C build
     ```
 
 </details>
