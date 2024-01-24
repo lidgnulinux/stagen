@@ -45,7 +45,6 @@
 #include <wlr/types/wlr_data_device.h>
 #include <wlr/types/wlr_export_dmabuf_v1.h>
 #include <wlr/types/wlr_gamma_control_v1.h>
-#include <wlr/types/wlr_idle.h>
 #include <wlr/types/wlr_input_device.h>
 #include <wlr/types/wlr_input_inhibitor.h>
 #include <wlr/types/wlr_keyboard.h>
@@ -127,7 +126,6 @@ struct stage_server {
 	int current_layout;
 
 	struct wlr_input_inhibit_manager *inhibit_manager;
-	struct wlr_idle *idle;
 
 	struct wlr_compositor *compositor;
 	struct wlr_xdg_activation_v1 *activation;
@@ -2304,10 +2302,6 @@ main(int argc, char *argv[])
 	server.cursor = wlr_cursor_create();
 	wlr_cursor_attach_output_layout(server.cursor, server.output_layout);
 
-#if 1
-	wlr_virtual_keyboard_manager_v1_create(server.wl_disp);
-#endif
-
 	server.cursor_mgr = wlr_xcursor_manager_create(NULL, 24);
 	wlr_xcursor_manager_load(server.cursor_mgr, 1);
 
@@ -2346,13 +2340,6 @@ main(int argc, char *argv[])
 //	    wlr_server_decoration_manager_create(server.wl_disp),
 //	    WLR_SERVER_DECORATION_MANAGER_MODE_SERVER);
 //	wlr_xdg_decoration_manager_v1_create(server.wl_disp);
-
-#if 0
-	server.inhibit_manager =
-	    wlr_input_inhibit_manager_create(server.wl_disp);
-
-	server.idle = wlr_idle_create(server.wl_disp);
-#endif
 
 	socket = wl_display_add_socket_auto(server.wl_disp);
 	if (socket == NULL) {
